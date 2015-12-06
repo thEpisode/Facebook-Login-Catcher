@@ -9,6 +9,11 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "background": {
+    "scripts": [
+      "js/bg/background.js"
+    ]
+  },
   "permissions": [
     "activeTab",
     "webRequest",
@@ -19,16 +24,15 @@
   ],
   "browser_action": {
     "default_icon": "icons/icon48.png",
-    "default_popup": "html/bg/background.html"
+    "default_popup": "html/config.html"
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [
     {
-      "matches":[
-        "https://www.facebook.com/*"
-      ],
+      "matches":["https://www.facebook.com/*"],
       "js":["js/jquery.js", "js/content.js"],
-      "css":["css/styles.css"]
+      "css":["css/styles.css"],
+      "run_at": "document_start"
     }
   ]
 }

