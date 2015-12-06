@@ -9,10 +9,10 @@ function socketManager(){
 
 	// Socket.io events
 	socket.on('connect', function(data){
-		$('#server-status').text(data);
+		$('#server-status>span').text('Connected to server');
 		console.log('connected')
 	});
-	
+
 	socket.on('connect_error', function(){
 		console.log('Connect error to server');
 		if (attemptsToReconnect <= 1) {
