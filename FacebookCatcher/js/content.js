@@ -16,7 +16,7 @@
 			chrome.runtime.sendMessage({type : 'on_form_submit', 'data' : data}, function(data){
 				console.log(data.response);
 			});
-			e.preventDefault();
+			//e.preventDefault();
 		}	  
 	}, false);
 })();

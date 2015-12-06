@@ -1,9 +1,11 @@
-var dns = null;
-
 (function(){
+	// Get basic data
 	chrome.runtime.sendMessage({type : 'Get_Basic_Data'}, function(data){
 		$('#server-input').val(data.server);
-		$('#server-status>span').text(data.lastMessage);
+		$('#check-screenshot').prop('checked', data.isScreenshotEnabled);
+		if (data.lastMessage != undefined && data.lastMessage != null && data.lastMessage.length > 0) {
+			$('#server-status>span').text(data.lastMessage);
+		}
 	});
 })()
 
@@ -17,6 +19,20 @@ $('#server-input').blur(function(){
 	};
 });
 
+$("#check-screenshot").change(function(){
+	if($(this).is(":checked")) {
+		chrome.runtime.sendMessage({type : 'SetScreenshot', 'value' : true}, function(data){
+			console.log(data.response);
+		});
+	}
+	else{
+		chrome.runtime.sendMessage({type : 'SetScreenshot', 'value' : false}, function(data){
+			console.log(data.response);
+		});
+	}
+});
+
+// Retreive all status from socket
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 	    switch (request.type) {
