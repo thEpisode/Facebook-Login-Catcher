@@ -1,35 +1,30 @@
-// Variables
-var dnsServer = null;
-var socket = null;
-var attemptsToReconnect = 3;
+var dns = null;
 
-function socketManager(){
-	// Socket.io settings
-	socket = new io(dnsServer);
-
-	// Socket.io events
-	socket.on('connect', function(data){
-		$('#server-status>span').text('Connected to server');
-		console.log('connected')
+(function(){
+	chrome.runtime.sendMessage({type : 'Get_Basic_Data'}, function(data){
+		$('#server-input').val(data.server);
+		$('#server-status>span').text(data.lastMessage);
 	});
-
-	socket.on('connect_error', function(){
-		console.log('Connect error to server');
-		if (attemptsToReconnect <= 1) {
-			socket.close();
-			$('#server-status').text('Max of attempts to connect, verify if backend app is running');
-		};
-		attemptsToReconnect--;
-	});
-}
-
+})()
 
 // Front-end events
 $('#server-input').blur(function(){
 	var server = $('#server-input').val();
 	if (server.length > 0) {
-		dnsServer = server;
-		attemptsToReconnect = 3;
-		socketManager();
+		chrome.runtime.sendMessage({type : 'Socket_Manager', 'dns' : server}, function(data){
+			console.log(data.response);
+		});
 	};
+});
+
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+	    switch (request.type) {
+	    	case 'Background.Message':
+	    		$('#server-status>span').text(request.message);
+	    	break;
+	        
+	        default:
+	        	sendResponse({response : 'Invalid option'});
+     }
 });
